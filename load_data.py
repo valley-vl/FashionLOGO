@@ -39,7 +39,6 @@ class EmbeddingRecallDataset(torch.utils.data.Dataset):
             img_array = img_array[y1: y2, x1: x2]
         elif self.dataset == 'BelgaLogos':
             img_path,inst_id,local_id,bbox,label,type_ = self.samples.iloc[idx]
-            print(os.path.join('datasets',self.dataset,'images',img_path))
             img_array = cv2.imread(os.path.join('datasets',self.dataset,'images',img_path))
             img_array = cv2.cvtColor(img_array, cv2.COLOR_BGR2RGB)
             x1, y1, x2, y2 = eval(bbox)

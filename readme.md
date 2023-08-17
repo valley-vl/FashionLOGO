@@ -7,9 +7,7 @@
 ## Download Pretrained Model
 Our model is released in <https://drive.google.com/file/d/1h--xQHHVrguSeycgThzk0FGsBdCnmFZQ/view?usp=drive_link>, download and put it into "checkpoints" folder.
 
-## Predict
+## Inference
 ```
 python3 -m torch.distributed.launch predict.py --model_path checkpoints/your_model_checkpoint
 ```
-
-

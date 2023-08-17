@@ -58,6 +58,9 @@ with torch.no_grad():
     query_emb = embeds[types==0]
     gallery_labels = labels[types==1]
     query_labels = labels[types==0]
-
-    val_metric_dict = get_metric(query_emb, query_labels, gallery_emb, gallery_labels)
-    print(torch.distributed.get_rank(),val_metric_dict)
+    if int(gallery_labels.shape[0])==0:
+        val_metric_dict = get_metric(query_emb, query_labels)
+    else:
+        val_metric_dict = get_metric(query_emb, query_labels, gallery_emb, gallery_labels)
+    if torch.distributed.get_rank() ==0:
+        print(val_metric_dict)
